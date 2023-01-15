@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { resetAfterAddingToDo } from '../store/redux/toDoActions';
 import { updateItem } from '../store/redux/toDoActions';
+import { ImageBackground } from 'react-native';
 
 function FormToDo({route}) {
 
@@ -141,6 +142,7 @@ function FormToDo({route}) {
 
 
   return (
+    <ImageBackground source={require("../assets/form.jpg")} imageStyle={styles.imageStyle} style={styles.formScreen}>
     <View style={styles.formPageContainer}>
         <Text style={styles.title}> {isItem ? "Update To Do" : "Add To Do"} </Text> 
 
@@ -166,6 +168,7 @@ function FormToDo({route}) {
             </Button>
         </View>
     </View>
+    </ImageBackground>
   )
 };
 
@@ -181,6 +184,12 @@ const styles = StyleSheet.create({
     },
     inputsContainer: {
         marginVertical: 25
+    },
+    imageStyle: {
+        opacity: 0.20
+    },
+    formScreen: {
+        flex: 1
     }
 });
 

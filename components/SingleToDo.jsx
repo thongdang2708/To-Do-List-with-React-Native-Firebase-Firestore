@@ -7,6 +7,9 @@ import { useDispatch } from 'react-redux';
 import { deleteItem } from '../store/redux/toDoActions';
 import { useNavigation } from '@react-navigation/native';
 import { updateItem } from '../store/redux/toDoActions';
+import { CheckBox } from 'react-native-elements';
+import { useState } from 'react';
+
 
 function SingleToDo({onPress, name, date, finished, id, description, userId}) {
     //Set dispatch and navigation
@@ -29,15 +32,34 @@ function SingleToDo({onPress, name, date, finished, id, description, userId}) {
 
     //Mark Done
 
-    const markDone = () => {
-        dispatch(updateItem(id, {
-            name: name,
-            description: description,
-            finished: true,
-            date: date,
-            userId: userId
-        }))
+    const markDoneOrNotDone = () => {
+
+        if (checked == true) {
+            dispatch(updateItem(id, {
+                name: name,
+                description: description,
+                finished: false,
+                date: date,
+                userId: userId
+            }))
+            setChecked(false);
+        } else {
+            dispatch(updateItem(id, {
+                name: name,
+                description: description,
+                finished: true,
+                date: date,
+                userId: userId
+            }));
+            setChecked(true);
+        }
+        
+
+        
     };
+
+    //Set state for check box 
+    let [checked, setChecked] = useState(finished);
 
 
   return (
@@ -47,12 +69,12 @@ function SingleToDo({onPress, name, date, finished, id, description, userId}) {
         <View style={styles.firstBox}>
         <View style={styles.eachContainer}>
         <Text style={styles.text}> Name of to do: </Text>
-        <Text style={styles.specialNames}> {name} </Text>
+        <Text style={[styles.specialNames, checked && styles.textDone]}> {name} </Text>
         </View>
 
         <View style={styles.eachContainer}>
         <Text style={styles.text}> Description  </Text>
-        <Text style={styles.specialNames}> {description} </Text>
+        <Text style={[styles.specialNames, checked && styles.textDone]}> {description} </Text>
         </View>
 
         <View style={styles.eachContainer}>
@@ -63,7 +85,7 @@ function SingleToDo({onPress, name, date, finished, id, description, userId}) {
         </View>
 
         <View style={styles.iconBoxContainer}>
-            <Icon name={"checkmark-circle-outline"} color={finished ? colorList.green : "black"} onPress={markDone}/>
+            <CheckBox containerStyle={styles.checkBox} checked={checked} onPress={markDoneOrNotDone}/>
             <Icon name={"newspaper-outline"} color={colorList.gold} onPress={handleUpdate}/>
             <Icon name={"close-outline"} color={colorList.red} onPress={handleDelete}/>
         </View>
@@ -90,12 +112,16 @@ const styles = StyleSheet.create({
         flexDirection: "row"
        
     },
+
     eachContainer: {
         marginVertical: 8
     },
     text: {
         fontSize: 14
     },
+    textDone: {
+        textDecorationLine: "line-through"
+    },  
     specialNames: {
         fontWeight: "bold"
     },

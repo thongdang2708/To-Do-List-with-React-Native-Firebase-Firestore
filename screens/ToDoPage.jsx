@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useLayoutEffect } from 'react';
 import Icon from '../UI/Icon';
 import AuthContext from '../store/context/AuthContext';
+import { ImageBackground } from 'react-native';
 function ToDoPage() {
 
   //Set dispatch and navigation
@@ -80,11 +81,13 @@ function ToDoPage() {
   }
 
   return (
+    <ImageBackground source={require("../assets/todolist.jpg")} imageStyle={styles.imageStyle}>
     <View style={styles.listContainer}>
         <View>
             <FlatList data={todos} renderItem={handleRenderItem}/>
         </View>
     </View>
+    </ImageBackground>
   )
 }
 
@@ -92,6 +95,9 @@ const styles = StyleSheet.create({
     listContainer: {
       marginVertical: 10,
       marginHorizontal: 15
+    },
+    imageStyle: {
+      opacity: 0.55
     }
 });
 
