@@ -9,3 +9,5 @@ Please download a React Native Debugger through a link:
 https://github.com/jhen0409/react-native-debugger
 
 Then connect to Port: 19000 and you can open the app
+
+Publish link in Expo: https://expo.dev/@thongdang/ToDoList?serviceType=classic&distribution=expo-go 
