@@ -13,15 +13,17 @@ Mobile outline:
 
 ![image](https://user-images.githubusercontent.com/89829761/215287195-a8def805-0093-45ef-bd83-27390cbb1690.png)
 
-
-
 At first, please use command line: npm install
 
+Please download a React Native Debugger through a link:
 
-Please download a React Native Debugger through a link: 
-
+```bash
 https://github.com/jhen0409/react-native-debugger
+```
 
 Then connect to Port: 19000 and you can open the app
 
-Publish link in Expo: https://expo.dev/@thongdang/ToDoList?serviceType=classic&distribution=expo-go 
+```bash
+Publish link in Expo: https://expo.dev/@thongdang/ToDoList?serviceType=classic&distribution=expo-go
+```
+
