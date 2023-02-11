@@ -23,7 +23,7 @@ import {Ionicons} from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-let timerForRefreshToken = 1 * 60 * 60 * 1000;
+let timerForRefreshToken = 10 * 1000;
 
 
 export default function App () {
